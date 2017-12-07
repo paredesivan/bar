@@ -1,0 +1,185 @@
+/******** LESS ********/
+
+@height: 50px; @arrow-height: 8px; @arrow-direction: down;
+@color-reverse: #ffffff;
+@color0: #9b59b6; @color0-active: #773e8e;
+@color1: #5BAA8A; @color1-active: #3d765f;
+@color2: #ED755C; @color2-active: #e84f30;
+@color3: #918e7e; @color3-active: #919053;
+@color4: #fda4e9; @color4-active: #e32dba;
+@color5: #738CC5; @color5-active: #3c5590;
+// Use to animate easily
+.transition(@time: 500ms, @type: ease-in-out, @delay: 0ms) {
+  -webkit-transition: @time @type @delay;
+  -moz-transition: @time @type @delay;
+  -o-transition: @time @type @delay;
+  transition: @time @type @delay;
+}
+// Use to design a specific text btn easily
+.specific-text(@flex, @bg-color, @active-color) {
+  flex: @flex;
+  a:hover {
+    background-color: @bg-color;
+    .arrow {
+      opacity: 1;
+      /* I don't code the other arrow but you can do it on your own */
+      & when (@arrow-direction = down) {
+        border-top-color: @bg-color;
+        bottom: -@arrow-height;
+      }
+    }
+  }
+  &.active,
+  a:active,
+  a:focus {
+    background-color: @active-color;
+    .arrow {
+      opacity: 1;
+      /* I don't code the other arrow but you can do it on your own */
+      & when (@arrow-direction = down) {
+        border-top-color: @active-color;
+        bottom: -@arrow-height;
+      }
+    }
+  }
+}
+// Use to design a specific img btn easily
+.specific-img(@flex, @bg-color, @active-color) {
+  flex: @flex;
+  a:hover {
+    background-color: @bg-color;
+    span.img svg {
+      fill: @color-reverse;
+    }
+    .arrow {
+      opacity: 1;
+      /* I don't code the other arrow but you can do it on your own */
+      & when (@arrow-direction = down) {
+        border-top-color: @bg-color;
+        bottom: -@arrow-height;
+      }
+    }
+  }
+  &.active,
+  a:active,
+  a:focus {
+    background-color: @active-color;
+    span.img svg {
+      fill: @color-reverse;
+    }
+    .arrow {
+      opacity: 1;
+      /* I don't code the other arrow but you can do it on your own */
+      & when (@arrow-direction = down) {
+        border-top-color: @active-color;
+        bottom: -@arrow-height;
+      }
+    }
+  }
+}
+// Use to design an arrow easily
+.arrow(@top, @right, @bottom, @left) {
+  .transition(300ms, ease-out, 0ms);
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  opacity: 0;
+  /* I don't code the other arrow but you can do it on your own */
+  & when (@arrow-direction = down) {
+    bottom: 0;
+    border-left: @left solid transparent;
+    border-right: @right solid transparent;
+    border-top: @top solid @color-reverse;
+  }
+}
+
+/******** STUFF ********/
+//@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+ul#navbar1.navbar {
+  height: @height;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  padding: 0;
+  // Common btn css
+  li.btn2 {
+    font-size: 16px;
+    //font-weight: semi-bold;
+    text-align: center;
+    background-color: @color-reverse;
+    color: #7f8c8d;
+    position: relative;
+    z-index: 1;
+    font-family: 'Source Sans Pro', sans-serif;
+    height: @height;
+    // Common border
+    &.border-right {
+      border-right: 1px solid #7f8c8d;
+    }
+    // Common a css
+    a {
+      text-decoration: none;
+      color: inherit;
+      width: 100%;
+      display: block;
+      outline: none;
+      .transition(600ms, ease-out, 0ms);
+      height: @height;
+      // Common text only btn css
+      span.title {
+        display: inline-block;
+        letter-spacing: 2px;
+        width: 100%;
+        vertical-align: middle;
+        line-height: @height;
+      }
+      // Common img only btn css
+      span.img {
+        display: inline-block;
+        height: @height;
+        width: 100%;
+        line-height: @height;
+        // Common svg only css
+        svg {
+          fill: #7f8c8d;
+          width: 32px;
+          height: 32px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+      // Common arrow
+      .arrow {
+        .arrow(@arrow-height, 16px, 0, 16px);
+      }
+    }
+    // Common a:hover css
+    a:hover {
+      color: @color-reverse;
+      cursor: pointer;
+    }
+    &.active,
+    a:active,
+    a:focus {
+      color: @color-reverse;
+    }
+  }
+  // Specific home btn css
+  #home { .specific-img(5, @color0, @color0-active); }
+  // Specifics text btn css
+  #btn1 { .specific-text(19, @color1, @color1-active); }
+  #btn2 { .specific-text(19, @color2, @color2-active); }
+  #btn3 { .specific-text(19, @color3, @color3-active); }
+  #btn4 { .specific-text(19, @color4, @color4-active); }
+  #btn5 { .specific-text(19, @color5, @color5-active); }
+}
+
+
+

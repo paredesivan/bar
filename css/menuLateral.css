@@ -1,0 +1,39 @@
+
+body {
+    background: radial-gradient(ellipse at center, rgb(255, 235, 199) 0%, rgb(238, 165, 98) 44%, rgb(238, 153, 64) 100%);
+}
+
+.nav2 {
+    border: 1px solid black;
+    position: absolute;
+    float:left;
+    background-color: #eeeeee;
+    width: 115px;
+    height: auto;
+    margin-left: -110px;
+    margin-top: 0px;
+    transition-property: margin-left;
+    transition-duration: 0.1s; /*anim speed*/
+    transition-timing-function:ease-out;
+}
+
+.nav2 .li2 {
+    /*list-style:none;*/
+    padding-top: 5vh;
+    margin-left: -50px;
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+}
+
+.li2 .a{
+    color: #222;
+    text-decoration:none;
+}
+
+.nav2:hover {
+    margin-left: -8px;
+}
+
+.menuicon{
+    float: right;
+}
